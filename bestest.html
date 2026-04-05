@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MoodStyle</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f5f7fa;
+      transition: 0.5s;
+    }
+
+    .navbar {
+      background: black;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button {
+      background: black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .images img {
+      width: 200px;
+      border-radius: 10px;
+    }
+
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<div class="navbar">MoodStyle ✨</div>
+
+<div class="container">
+
+  <h2>Find Your Look</h2>
+
+  <select id="mood">
+    <option>Happy</option>
+    <option>Sad</option>
+    <option>Angry</option>
+    <option>Chill</option>
+  </select>
+
+  <select id="color">
+    <option>Bright</option>
+    <option>Dark</option>
+    <option>Pastel</option>
+    <option>Neutral</option>
+  </select>
+
+  <button onclick="recommend()">Get Style</button>
+
+  <div id="result"></div>
+
+  <div class="images">
+    <img id="img1">
+    <img id="img2">
+  </div>
+
+</div>
+
+<script>
+function recommend() {
+
+  let mood = document.getElementById("mood").value;
+  let color = document.getElementById("color").value;
+
+  let result = "";
+
+  // 🎨 BACKGROUND SYSTEM (YOUR IDEA PERFECTLY IMPLEMENTED)
+
+  if (mood === "Angry" && color === "Pastel") {
+    document.body.style.background = "linear-gradient(to right, pink, #ffb6c1)";
+  }
+  else if (mood === "Angry" && color === "Dark") {
+    document.body.style.background = "linear-gradient(to right, darkred, black)";
+  }
+  else if (mood === "Sad" && color === "Pastel") {
+    document.body.style.background = "linear-gradient(to right, #a1c4fd, #c2e9fb)";
+  }
+  else if (color === "Neutral") {
+    document.body.style.background = "linear-gradient(to right, beige, brown)";
+  }
+  else if (mood === "Happy") {
+    document.body.style.background = "linear-gradient(to right, yellow, orange)";
+  }
+  else {
+    document.body.style.background = "#f5f7fa";
+  }
+
+  // 🧠 RECOMMENDATION + IMAGES
+
+  if (mood === "Angry") {
+    result = "🔥 Bold powerful look + strong spicy scent";
+    document.getElementById("img1").src = "angry1.jpg";
+    document.getElementById("img2").src = "angry2.jpg";
+  }
+  else if (mood === "Sad") {
+    result = "🌊 Soft calm outfit + fresh aqua fragrance";
+    document.getElementById("img1").src = "sad1.jpg";
+    document.getElementById("img2").src = "sad2.jpg";
+  }
+  else if (mood === "Happy") {
+    result = "🌈 Bright playful outfit + citrus scent";
+    document.getElementById("img1").src = "sad2.jpg";
+    document.getElementById("img2").src = "angry2.jpg";
+  }
+  else {
+    result = "😌 Relaxed outfit + light floral scent";
+    document.getElementById("img1").src = "sad1.jpg";
+    document.getElementById("img2").src = "angry1.jpg";
+  }
+
+  document.getElementById("result").innerText = result;
+}
+</script>
+
+</body>
+</html>
